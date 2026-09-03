@@ -1,0 +1,65 @@
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -e '.[dev]'
+      - run: python -m pytest -q
+      - run: python -m build --wheel
+      - name: Build a generated agent image
+        run: |
+          target="${RUNNER_TEMP}/generated-agent"
+          create-aimarket-agent "CI Agent" --no-metis --directory "${target}"
+          docker build -t generated-aimarket-agent:test "${target}"
+
+  typescript:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # The parity test signs the same envelope in both languages, so the
+      # Python signer has to be installable in this job too.
+      - run: python -m pip install cryptography
+      - name: Generator and cross-language parity tests
+        working-directory: npm
+        run: |
+          npm install --no-audit --no-fund
+          npm test
+      - name: Scaffold, test and containerize a generated TypeScript agent
+        run: |
+          target="${RUNNER_TEMP}/generated-ts-agent"
+          node npm/bin/cli.mjs "CI Agent" --no-metis --directory "${target}"
+          cd "${target}"
+          npm install --no-audit --no-fund
+          npm run configure
+          npm test
+          npm run validate
+          docker build -t generated-aimarket-agent-ts:test .
+      - name: The packed tarball scaffolds through npx
+        run: |
+          cd npm
+          package="$(npm pack --silent)"
+          cd "${RUNNER_TEMP}"
+          npx --yes --package="${GITHUB_WORKSPACE}/npm/${package}" create-aimarket-agent "Packed Agent" --directory "${RUNNER_TEMP}/packed-agent"
+          test -f "${RUNNER_TEMP}/packed-agent/src/agent.ts"

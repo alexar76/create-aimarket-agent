@@ -1,0 +1,46 @@
+{
+  "name": "create-aimarket-agent",
+  "version": "0.1.0",
+  "description": "Scaffold a minimal AIMarket Protocol v2 capability provider in TypeScript",
+  "keywords": [
+    "aimarket",
+    "agent",
+    "ai-agent",
+    "scaffold",
+    "generator",
+    "ed25519",
+    "signed-receipts",
+    "mcp"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20.6"
+  },
+  "bin": {
+    "create-aimarket-agent": "bin/cli.mjs"
+  },
+  "files": [
+    "bin",
+    "src",
+    "templates",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexar76/create-aimarket-agent.git",
+    "directory": "npm"
+  },
+  "homepage": "https://github.com/alexar76/create-aimarket-agent#readme",
+  "bugs": {
+    "url": "https://github.com/alexar76/create-aimarket-agent/issues"
+  },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.mjs\""
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}

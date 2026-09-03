@@ -1,0 +1,4 @@
+PORT=8080
+AIMARKET_HUB_URL=https://modelmarket.dev
+AIMARKET_METIS_URL=https://metis.modelmarket.dev
+AIMARKET_PROVIDER_KEY_FILE=.aimarket/provider.key
