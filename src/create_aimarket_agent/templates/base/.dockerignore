@@ -1,0 +1,11 @@
+.env
+.git
+.github
+.aimarket
+.venv
+__pycache__
+.pytest_cache
+.coverage
+build
+dist
+*.egg-info

@@ -1,0 +1,13 @@
+{
+  "product_id": "__PROJECT_SLUG__",
+  "capability_id": "__PROJECT_SLUG__.invoke@v1",
+  "name": "__PROJECT_NAME__",
+  "description": "A generated AIMarket __AGENT_KIND__ capability",
+  "invoke_url": "http://127.0.0.1:8080/invoke",
+  "publisher_id": "community",
+  "provider_pubkey": "",
+  "price_per_call_usd": 0.001,
+  "input_schema": {"type": "object", "additionalProperties": true},
+  "output_schema": {"type": "object", "additionalProperties": true},
+  "verification": {"metis": __METIS_ENABLED__}
+}

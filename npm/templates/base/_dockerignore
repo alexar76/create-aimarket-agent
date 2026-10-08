@@ -1,0 +1,7 @@
+.env
+.git
+.github
+.aimarket
+node_modules
+dist
+npm-debug.log
