@@ -1,11 +1,12 @@
 <!-- satellite-contributing -->
 # Contributing to create-aimarket-agent
 
-This repository is a read-only mirror. Report bugs and proposed patches in
-[Issues](https://github.com/alexar76/create-aimarket-agent/issues), with the runtime
-version, reproduction and expected result. Direct PRs are not accepted or imported;
-mirror synchronization replaces satellite commits. Do not send generator changes
-to the Factory repository.
+Pull requests are welcome here. History is append-only (no force-push): a merged
+pull request is imported back into the canonical monorepo and synced here again,
+so your commit stays. Report bugs in
+[Issues](https://github.com/alexar76/create-aimarket-agent/issues) with the runtime
+version, reproduction and expected result, and open an issue first for anything
+larger than a fix. Do not send generator changes to the Factory repository.
 
 ## Local Checks
 
