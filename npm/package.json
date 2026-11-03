@@ -1,6 +1,6 @@
 {
   "name": "create-aimarket-agent",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Scaffold a minimal AIMarket Protocol v2 capability provider in TypeScript",
   "keywords": [
     "aimarket",
