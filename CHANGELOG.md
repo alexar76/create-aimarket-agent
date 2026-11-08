@@ -2,6 +2,12 @@
 
 Notable changes to `create-aimarket-agent`. Earlier releases: the git history.
 
+## 0.1.2 — 2026-11-08
+
+### Changed
+- A new agent's `pyproject.toml` asks for `cryptography>=50.0.2` and `fastapi>=0.162.0` (previously `>=44` and
+  `>=0.115`), the floors the rest of the ecosystem moved to on 2026-11-07.
+
 ## 0.1.1 — 2026-11-03
 
 ### Changed
